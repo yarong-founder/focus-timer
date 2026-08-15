@@ -9,12 +9,22 @@ import "./App.css";
 function App() {
   return (
     <Router>
-      <NavigationBar />
-        <Routes>
+      <div className="app-shell">
+        <NavigationBar />
+
+        <main className="app-content">
+          <Routes>
             <Route path="/" element={<TimerPage />} />
             <Route path="/History" element={<HistoryPage />} />
             <Route path="/Dashboard" element={<DashboardPage />} />
-        </Routes>
+          </Routes>
+        </main>
+
+        <footer className="app-footer">
+          <span>AI fundamentals Club - Final assignment</span>
+          <span>Built by YARONG</span>
+        </footer>
+      </div>
     </Router>
   );
 }
