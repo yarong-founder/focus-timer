@@ -1,0 +1,97 @@
+.history-page {
+  width: min(100% - 32px, 720px);
+  margin: 72px auto;
+  padding: 36px;
+  background: rgba(255, 255, 255, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 8px;
+  box-shadow: 0 16px 40px rgba(42, 58, 74, 0.14);
+  backdrop-filter: blur(18px) saturate(140%);
+}
+
+.history-page h2 {
+  margin: 0 0 24px;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.history-page__filters {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.history-page__filters select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  color: #1d1d1f;
+  background: rgba(255, 255, 255, 0.56);
+  border: 1px solid rgba(60, 60, 67, 0.16);
+  border-radius: 8px;
+}
+
+.history-page__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.history-page__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 68px;
+  color: #3a3a3c;
+  border-top: 1px solid rgba(60, 60, 67, 0.1);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.history-page__delete-button {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  color: #ff3b30;
+  background: transparent;
+  border: 1px solid rgba(255, 59, 48, 0.22);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .history-page {
+    margin: 24px auto;
+    padding: 24px;
+  }
+
+  .history-page__filters {
+    grid-template-columns: 1fr;
+  }
+
+  .history-page__item {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding: 14px 0;
+  }
+}
+
+.history-page__session {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.history-page__session strong {
+  color: #1d1d1f;
+  font-size: 15px;
+}
+
+.history-page__session span {
+  color: #636366;
+  font-size: 13px;
+}

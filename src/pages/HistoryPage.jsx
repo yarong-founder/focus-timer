@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import API_URL from "../api";
+import "./HistoryPage.css";
 
 function HistoryPage() {
     const [sessions, setSessions] = useState([]);
@@ -44,8 +45,9 @@ function HistoryPage() {
     }
 
     return (
-        <section>
+        <section className="history-page">
             <h2>History</h2>
+            <div className="history-page__filters">
             <select
                 id="subject-select"
                 value={selectSubjectId}
@@ -64,7 +66,7 @@ function HistoryPage() {
             </select>
             <select
                 value={selectRange}
-                onChange={(event)=>setSelectRange(event.target.valur)}
+                onChange={(event)=>setSelectRange(event.target.value)}
             >
                 <option value="all">All dates</option>
                 <option value="week">This week</option>
@@ -73,15 +75,27 @@ function HistoryPage() {
             {sessions.length ===0 ? (
                 <p>No sessions match the current filters.</p>
             ) : (
-                <ul>
+                <ul className="history-page__list">
                     {sessions.map((session)=>(
-                        <li key={session.id}>
-                            Subject : {session.subject_name} / {session.duration} minutes / {" "} {new Date(session.created_at).toLocaleString("ko-KR")}
-                            <button onClick={()=> handleDeleteSession(session.id)}>Delete</button>
+                        <li className="history-page__item" key={session.id}>
+                            <div className="history-page__session">
+                                <strong>{session.subject_name}</strong>
+                                <span>
+                                    {Number(session.duration).toFixed(1)} minutes ·{" "}
+                                    {new Date(session.created_at).toLocaleString("ko-KR")}
+                                </span>
+                            </div>
+                            <button 
+                                className="history-page__delete-button" 
+                                onClick={()=> handleDeleteSession(session.id)}
+                            >
+                                Delete
+                            </button>
                         </li>
                     ))}
                 </ul>
             )}
+            </div>
         </section>
     );
 }

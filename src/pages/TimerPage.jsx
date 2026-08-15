@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import API_URL from "../api";
+import "./TimerPage.css";
 
 const FOCUS_SECONDS = 25 * 60;
 const BREAK_SECONDS = 5 * 60;
@@ -162,15 +163,22 @@ function TimerPage() {
         ((totalSeconds-remainingSeconds)/totalSeconds)*100;
 
     return (
-        <section>
+        <section className="timer-page">
             <h2>Timer</h2>
-            <p>{mode === "focus"? "Focus time":"Break time"}</p>
-            <p>{minutes}:{seconds}</p>
-            <div className="timer-progress">
-                <div 
-                    className="timer-progress__bar"
-                    style={{ width:`${progressPercent}%`}}
-                />
+            
+            <div
+              className={`timer-page__circle timer-page__circle--${mode}`}
+              style={{ "--progress": `${progressPercent * 3.6}deg` }}
+            >
+                <div className="timer-page__circle-center">
+                    <p className="timer-page__time">
+                        {minutes}:{seconds}
+                    </p>
+                    <p className={`timer-page__mode timer-page__mode--${mode}`}>
+                        {mode === "focus" ? "Focus Session" : "Break Time"}
+                    </p>
+                </div>
+                
             </div>
             <button
                 onClick={()=> setisRunning((currentState)=>!currentState)}

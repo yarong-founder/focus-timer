@@ -1,0 +1,220 @@
+.timer-page {
+  width: min(100% - 32px, 720px);
+  margin: 72px auto;
+  padding: 36px;
+  background: rgba(255, 255, 255, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 8px;
+  box-shadow: 0 16px 40px rgba(42, 58, 74, 0.14);
+  backdrop-filter: blur(14px) saturate(140%);
+}
+
+.timer-page h2 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.timer-page__time {
+  margin: 28px 0;
+  color: #1d1d1f;
+  font-size: 84px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .timer-page {
+    margin: 24px auto;
+    padding: 24px;
+  }
+
+  .timer-page__time {
+    font-size: 42px;
+  }
+
+  .timer-page__circle {
+    width: 200px;
+  }
+}
+
+.timer-page button {
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.timer-page > button {
+  width: 100%;
+  min-height: 48px;
+  margin-bottom: 24px;
+  background: #0a84ff;
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(10, 132, 255, 0.22);
+}
+
+.timer-page > button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+  box-shadow: none;
+}
+
+.timer-page form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  margin: 24px 0;
+}
+
+.timer-page input,
+.timer-page select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  color: #1d1d1f;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(60, 60, 67, 0.16);
+  border-radius: 8px;
+  outline: none;
+}
+
+.timer-page input:focus,
+.timer-page select:focus {
+  border-color: #0a84ff;
+  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.16);
+}
+
+.timer-page form button {
+  min-width: 72px;
+  padding: 0 16px;
+  color: #0a84ff;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(10, 132, 255, 0.2);
+  font-weight: 700;
+}
+
+.timer-page label {
+  display: block;
+  margin: 8px 12px;
+  color: #636366;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.timer-page select {
+  margin-top: 8px;
+}
+
+.timer-page ul {
+  padding: 0;
+  margin: 20px 0px 0px 12px;
+  list-style: none;
+}
+
+.timer-page li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  border-top: 1px solid rgba(60, 60, 67, 0.1);
+}
+
+.timer-page li button {
+  padding: 6px 10px;
+  color: crimson;
+  background: transparent;
+  border: 1px solid rgba(10, 132, 255, 0.2);
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  .timer-page form {
+    grid-template-columns: 1fr;
+  }
+
+  .timer-page form button {
+    min-height: 44px;
+  }
+}
+
+.timer-page__mode {
+  margin: 8px 0 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.timer-page__mode--focus {
+  color: #0a84ff;
+}
+
+.timer-page__mode--break {
+  color: #30a14e;
+}
+
+.timer-page__circle {
+  --accent: #0a84ff;
+  --track: rgba(120, 120, 128, 0.18);
+
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 250px;
+  aspect-ratio: 1;
+  margin: 28px auto;
+  border-radius: 50%;
+  box-shadow: 0 12px 28px rgba(42, 58, 74, 0.12);
+}
+
+.timer-page__circle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+   background: conic-gradient(
+    from 0deg,
+    #30a14e 0deg var(--progress),
+    var(--track) var(--progress) 360deg
+  );
+
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 14px),
+    #000 0
+  );
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 14px),
+    #000 0
+  );
+}
+
+.timer-page__circle-center {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 28px);
+  height: calc(100% - 28px);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(14px);
+}
+
+.timer-page__time {
+  margin: 0;
+  color: #1d1d1f;
+  font-size: 52px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-page__mode {
+  margin: 6px 0 0;
+  font-size: 18px;
+  font-weight: 500;
+}
