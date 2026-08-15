@@ -3,16 +3,26 @@ from flask import Flask, request
 from flask_cors import CORS
 from datetime import datetime, timedelta
 from collections import defaultdict
+import os
 
 app = Flask(__name__)
 CORS(app)
+DATA_FILE = os.environ.get("DATA_FILE", "data.json")
 
 def load_data():
-    with open("data.json", "r", encoding="utf-8") as file:
+    if not os.path.exists(DATA_FILE):
+        return {
+            "subjects": [],
+            "sessions": [],
+            "next_subject_id": 1,
+            "next_session_id": 1
+        }
+
+    with open(DATA_FILE, "r", encoding="utf-8") as file:
         return json.load(file)
 
 def save_data(data):
-    with open("data.json", "w", encoding="utf-8") as file:
+    with open(DATA_FILE, "w", encoding="utf-8") as file:
         json.dump(data, file, ensure_ascii=False, indent=2)
 
 @app.get("/")
@@ -75,8 +85,6 @@ def get_sessions():
         second=0,
         microsecond=0
     )
-
-    
 
     for session in data ["sessions"]:
         if subject_id is not None and session["subject_id"] != subject_id:
