@@ -1,0 +1,14 @@
+.timer-progress {
+  width: 320px;
+  height: 12px;
+  overflow: hidden;
+  background-color: aquamarine;
+  border-radius: 999px;
+}
+
+.timer-progress__bar {
+  width: 0;
+  height: 100%;
+  background-color: blanchedalmond;
+  transition: width 1s linear;
+}
